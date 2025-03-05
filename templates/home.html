@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css' ) }}" />
+    <title>필터링 UI</title>
+</head>
+<body>
+    <h2>상품 필터링</h2>
+    <!-- 필터 섹션 -->
+    <form method='POST'>
+    <div class="filter-section">
+        <div class="filter-group">
+            <button type='button'  onclick="toggleCategories('category-list')">제조사 선택 ▼</button>
+            <div id='category-list' class="category-container" style="display: none;">
+                <label><input type="checkbox" name="category" value="BMW"> BMW</label>
+                <label><input type="checkbox" name="category" value="닛산"> 닛산</label>
+                <label><input type="checkbox" name="category" value="닷지"> 닷지</label>
+                <label><input type="checkbox" name="category" value="도요타"> 도요타</label>
+                <label><input type="checkbox" name="category" value="람보르기니"> 람보르기니</label>
+                <label><input type="checkbox" name="category" value="렉서스"> 렉서스</label>
+                <label><input type="checkbox" name="category" value="로터스"> 로터스</label>
+                <label><input type="checkbox" name="category" value="롤스로이스"> 롤스로이스</label>
+                <label><input type="checkbox" name="category" value="마세라티"> 마세라티</label>
+                <label><input type="checkbox" name="category" value="마쯔다"> 마쯔다</label>
+                <label><input type="checkbox" name="category" value="멕라렌"> 멕라렌</label>
+                <label><input type="checkbox" name="category" value="미쯔비시"> 미쯔비시</label>
+                <label><input type="checkbox" name="category" value="미쯔오카"> 미쯔오카</label>
+                <label><input type="checkbox" name="category" value="벤츠"> 벤츠</label>
+                <label><input type="checkbox" name="category" value="쉐보레"> 쉐보레</label>
+                <label><input type="checkbox" name="category" value="아우디"> 아우디</label>
+                <label><input type="checkbox" name="category" value="애스턴마틴"> 애스턴마틴</label>
+                <label><input type="checkbox" name="category" value="재규어"> 재규어</label>
+                <label><input type="checkbox" name="category" value="캐딜락"> 캐딜락</label>
+                <label><input type="checkbox" name="category" value="크라이슬러"> 크라이슬러</label>
+                <label><input type="checkbox" name="category" value="페라리"> 페라리</label>
+                <label><input type="checkbox" name="category" value="포드"> 포드</label>
+                <label><input type="checkbox" name="category" value="포르쉐"> 포르쉐</label>
+                <label><input type="checkbox" name="category" value="푸조"> 푸조</label>
+                <label><input type="checkbox" name="category" value="혼다"> 혼다</label>
+                <label><input type="checkbox" name="category" value="category0"> 전체</label>
+            </div>
+        </div>
+        <div class="filter-group">
+            <button type='button' onclick="toggleCategories('area-list')">지역 선택 ▼</button>
+            <div id="area-list" class="category-container" style="display: none;">
+                <label><input type="checkbox" name="area" value="강원"> 강원</label>
+                <label><input type="checkbox" name="area" value="경기"> 경기</label>
+                <label><input type="checkbox" name="area" value="경남"> 경남</label>
+                <label><input type="checkbox" name="area" value="경북"> 경북</label>
+                <label><input type="checkbox" name="area" value="광주"> 광주</label>
+                <label><input type="checkbox" name="area" value="대구"> 대구</label>
+                <label><input type="checkbox" name="area" value="대전"> 대전</label>
+                <label><input type="checkbox" name="area" value="부산"> 부산</label>
+                <label><input type="checkbox" name="area" value="서울"> 서울</label>
+                <label><input type="checkbox" name="area" value="세종"> 세종</label>
+                <label><input type="checkbox" name="area" value="울산"> 울산</label>
+                <label><input type="checkbox" name="area" value="인천"> 인천</label>
+                <label><input type="checkbox" name="area" value="전남"> 전남</label>
+                <label><input type="checkbox" name="area" value="전북"> 전북</label>
+                <label><input type="checkbox" name="area" value="제주"> 제주</label>
+                <label><input type="checkbox" name="area" value="충남"> 충남</label>
+                <label><input type="checkbox" name="area" value="충북"> 충북</label>
+                <label><input type="checkbox" name="area" value="area0"> 전체</label>
+            </div>
+        </div>
+
+        <div class="filter-group">
+            <button type='button' onclick="toggleCategories('color-list')">색상 선택 ▼</button>
+            <div id="color-list" class="category-container" style="display: none;">
+                <label>
+                    <input type="checkbox" name="color" value="검정색">
+                    <span class="color-box" style="background-color: black;"></span> 검정색
+                </label>
+                <label>
+                    <input type="checkbox" name="color" value="흰색"> 
+                    <span class="color-box" style="background-color: white; border: 1px solid #ccc;"></span> 흰색
+                </label>
+                <label>
+                    <input type="checkbox" name="color" value="빨강색"> 
+                    <span class="color-box" style="background-color: red;"></span> 빨강색
+                </label>
+                <label>
+                    <input type="checkbox" name="color" value="회색"> 
+                    <span class="color-box" style="background-color: grey;"></span> 회색
+                </label>
+                <label>
+                    <input type="checkbox" name="color" value="파랑색"> 
+                    <span class="color-box" style="background-color: blue;"></span> 파랑색
+                </label>
+                <label>
+                    <input type="checkbox" name="color" value="하늘색">
+                    <span class="color-box" style="background-color: skyblue;"></span> 하늘색
+                </label>
+                <label>
+                    <input type="checkbox" name="color" value="노란색"> 
+                    <span class="color-box" style="background-color: yellow;"></span> 노란색
+                </label>
+                <label>
+                    <input type="checkbox" name="color" value="황금색"> 
+                    <span class="color-box" style="background-color: gold;"></span> 황금색
+                </label>
+                <label>
+                    <input type="checkbox" name="color" value="은색"> 
+                    <span class="color-box" style="background-color: silver;"></span> 은색
+                </label>
+                <label>
+                    <input type="checkbox" name="color" value="갈색"> 
+                    <span class="color-box" style="background-color: brown;"></span> 갈색
+                </label>
+                <label>
+                    <input type="checkbox" name="color" value="보라색"> 
+                    <span class="color-box" style="background-color: purple;"></span> 보라색
+                </label>
+                <label>
+                    <input type="checkbox" name="color" value="초록색"> 
+                    <span class="color-box" style="background-color: green;"></span> 초록색
+                </label>
+                <label><input type="checkbox" name="color" value="color0"> 전체</label>
+            </div>
+        </div>
+
+        <div class="filter-group">
+            <label>가격 범위 (만원)</label>
+            <div class="price-range">
+                <input type="number" name="min_price" id="min-price" placeholder="최소" min="0">
+                <span>~</span>
+                <input type="number" name="max_price" id="max-price" placeholder="최대" min="0">
+            </div>
+        </div>
+
+        <div class="filter-group">
+            <label>연도 범위</label>
+            <div class="year-range">
+                <select name="start_year">
+                    <option value="min">최소</option>
+                    <option value="2001">2001년</option>
+                    <option value="2002">2002년</option>
+                    <option value="2003">2003년</option>
+                    <option value="2004">2004년</option>
+                    <option value="2005">2005년</option>
+                    <option value="2006">2006년</option>
+                    <option value="2007">2007년</option>
+                    <option value="2008">2008년</option>
+                    <option value="2009">2009년</option>
+                    <option value="2010">2010년</option>
+                    <option value="2011">2011년</option>
+                    <option value="2012">2012년</option>
+                    <option value="2013">2013년</option>
+                    <option value="2014">2014년</option>
+                    <option value="2015">2015년</option>
+                    <option value="2016">2016년</option>
+                    <option value="2017">2017년</option>
+                    <option value="2018">2018년</option>
+                    <option value="2019">2019년</option>
+                    <option value="2020">2020년</option>
+                    <option value="2021">2021년</option>
+                    <option value="2022">2022년</option>
+                    <option value="2023">2023년</option>
+                    <option value="2024">2024년</option>
+                </select>
+                <span>~</span>
+                <select name="end_year">
+                    <option value="max">최대</option>
+                    <option value="2001">2001년</option>
+                    <option value="2002">2002년</option>
+                    <option value="2003">2003년</option>
+                    <option value="2004">2004년</option>
+                    <option value="2005">2005년</option>
+                    <option value="2006">2006년</option>
+                    <option value="2007">2007년</option>
+                    <option value="2008">2008년</option>
+                    <option value="2009">2009년</option>
+                    <option value="2010">2010년</option>
+                    <option value="2011">2011년</option>
+                    <option value="2012">2012년</option>
+                    <option value="2013">2013년</option>
+                    <option value="2014">2014년</option>
+                    <option value="2015">2015년</option>
+                    <option value="2016">2016년</option>
+                    <option value="2017">2017년</option>
+                    <option value="2018">2018년</option>
+                    <option value="2019">2019년</option>
+                    <option value="2020">2020년</option>
+                    <option value="2021">2021년</option>
+                    <option value="2022">2022년</option>
+                    <option value="2023">2023년</option>
+                    <option value="2024">2024년</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    
+    <button type='submit'>조회</button>
+    </form>
+
+    {% if data %}
+    <h3>검색 결과</h3>
+    <table border="1">
+        <tr>
+            <th>모델명</th>
+            <th>지역</th>
+            <th>연식</th>
+            <th>가격</th>
+            <th>색상</th>
+        </tr>
+        {% for row in data %}
+        <tr>
+            <td>{{ row.모델명 }}</td>
+            <td>{{ row.지역 }}</td>
+            <td>{{ row.연식 }}</td>
+            <td>{{ row.가격 }}</td>
+            <td>{{ row.색상 }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% else %}
+    <p>일치하는 데이터가 없습니다.</p>
+    {% endif %}
+
+    <script>
+        function toggleCategories(id) {
+            let categoryList = document.getElementById(id);
+            categoryList.style.display = categoryList.style.display === "none" ? "grid" : "none";
+            
+        }
+        </script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-import time, random, re
+import time, random, re, pymysql, csv
 import pandas as pd
 
 from selenium import webdriver
@@ -84,3 +84,75 @@ def crawl_car_info(driver, sequence):
 def save_to_csv(data, filename, columns):
     df = pd.DataFrame(data, columns=columns)
     df.to_csv(filename, encoding='utf-8-sig', index_label='번호')
+
+# MySQL 연결
+def connect_to_db():
+    return pymysql.connect(
+        host='localhost',  # 데이터베이스 서버 주소
+        user='root',  # 사용자명
+        password='royjeong1116',  # 비밀번호
+        database='UsedCarDB'  # 사용할 데이터베이스 이름
+    )
+
+# 테이블 생성 함수
+def create_table_if_not_exists():
+    connection = connect_to_db()
+    cursor = connection.cursor()
+
+    create_table_query = """
+    CREATE TABLE IF NOT EXISTS Cars (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        car_model VARCHAR(255),
+        location VARCHAR(255),
+        price VARCHAR(50),
+        price_condition VARCHAR(50),
+        car_number VARCHAR(50),
+        model_year VARCHAR(20),
+        mileage VARCHAR(50),
+        fuel_type VARCHAR(50),
+        transmission VARCHAR(50),
+        color VARCHAR(50),
+        image_url TEXT
+    );
+    """
+    
+    cursor.execute(create_table_query)
+    connection.commit()
+    cursor.close()
+    connection.close()
+
+# CSV 데이터를 MySQL 테이블에 삽입하는 함수
+def insert_csv_to_db():
+    connection = connect_to_db()
+    cursor = connection.cursor()
+
+    # CSV 파일 열기
+    with open('./car_data.csv', mode='r', encoding='utf-8') as file:
+        csv_reader = csv.reader(file)
+        next(csv_reader)  # 첫 번째 행은 헤더이므로 건너뛰기
+
+        for row in csv_reader:
+            car_model = row[2]
+            location = row[3]
+            price = row[4]
+            price_condition = row[5]
+            car_number = row[6]
+            model_year = row[7]
+            mileage = row[8]
+            fuel_type = row[9]
+            transmission = row[10]
+            color = row[11]
+            image_url = row[12]
+
+            insert_query = """
+            INSERT INTO cars (car_model, location, price, price_condition, car_number, 
+                              model_year, mileage, fuel_type, transmission, color, image_url)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
+            """
+
+            cursor.execute(insert_query, (car_model, location, price, price_condition, car_number, 
+                                          model_year, mileage, fuel_type, transmission, color, image_url))
+
+    connection.commit()
+    cursor.close()
+    connection.close()

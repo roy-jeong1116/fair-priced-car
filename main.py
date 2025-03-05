@@ -14,5 +14,8 @@ def main():
     finally:
         driver.quit()
 
+    create_table_if_not_exists()  # 테이블이 없으면 생성
+    insert_csv_to_db()  # CSV 파일 데이터를 DB에 저장
+
 if __name__ == "__main__":
     main()

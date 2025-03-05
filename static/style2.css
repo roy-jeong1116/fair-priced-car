@@ -1,0 +1,49 @@
+html, body{
+	margin-left:25px; margin-right:25px; 
+	padding:0px; 
+	font-family: 'Roboto', sans-serif;
+	background-color: lightsteelblue;
+}
+
+table {
+    width: 280px;
+    height: 250px;
+    margin: auto;
+    font-size: 15px;
+}
+input[type="text"], input[type="password"] {
+    width: 250px;
+    height: 32px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(233,233,233);
+}
+.btn {
+    width: 263px;
+    height: 32px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(164, 199, 255);
+}
+.btn:active {
+    width: 263px;
+    height: 32px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(61, 135, 255);
+}
+.message{
+    text-align: center;
+    justify-content: center;
+}
+
+#header  {width: 100%; background: #0775d3; margin-top: 0px; padding:15px 0px 15px 0px;}

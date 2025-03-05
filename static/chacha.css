@@ -1,7 +1,8 @@
 body{
     font-family: Arial, sans-serif;
     margin: 20px;
-    text-align: center;
+    text-align: center !important;
+    background-color: darkseagreen !important;
 }
 
 .filter-section {
@@ -11,6 +12,7 @@ body{
     padding: 100px;
     background-color: #f8f8f8;
     border-radius: 10px;
+    margin-top: 30px;
     margin-bottom: 20px;
 }
 
@@ -86,4 +88,71 @@ button:hover {
 #min-price, #max-price {
     width: 80px;
     height: 30px;
+}
+
+strong{
+    font-size: 16px;
+}
+
+h2{
+    font-weight: bold !important;
+    margin-top: 30px !important;
+}
+
+.btn1{
+	background-color:dimgray;
+	color: white;
+	font-size: 16pt;
+	border: none;
+	
+	width: 200px;
+	height: 60px;
+	opacity: 0;
+	animation: scaleFadeIn 6s ease-in forwards;
+}
+
+.scale-fade-in {
+	opacity: 0;
+	transform: scale(0.8);
+	animation: scaleFadeIn 2s ease-out forwards;
+    font-size: 40pt;
+    color : gold;
+    font-weight: bold;
+	font-family: Arial;
+	text-align: center;
+	margin-top: 200px;
+}
+
+@keyframes scaleFadeIn {
+	from {
+		opacity: 0;
+		transform: scale(0.8);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+.center{
+	justify-content: center;
+}
+
+.fade-in{
+	opacity: 0;
+    animation: fadeIn 5s ease-in forwards;
+	font-size: 24pt;
+	font-family: Arial;
+	text-align: center;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(40px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
